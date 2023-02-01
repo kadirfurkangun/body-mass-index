@@ -1,5 +1,3 @@
-package deneme2;
-
 public class body_mass_index {
 	int bodyWeight,age;
 	double result,height;
