@@ -1,0 +1,69 @@
+package deneme2;
+
+public class body_mass_index {
+	int bodyWeight,age;
+	double result,height;
+	String gender;
+	String evaluationResult="";
+	// kontrol sistemi yap
+	
+	body_mass_index(int bodyWeight,int age,double height,String gender){
+		 this.bodyWeight=bodyWeight;
+		 this.age=age;
+		 this.height=height;
+		 this.gender=gender;
+	}
+	boolean control() {
+		if(bodyWeight<50||height<50||age<0) {
+			return false;
+		}
+		return true;
+	}
+	double calculator() {
+		double test3=(height*height)/10000;
+		result=(bodyWeight/test3);
+		return result;
+	}
+	String evaluation() {
+		if(result<=18.4) {
+			evaluationResult="Uzunluğunuza göre uygun ağırlıkta olmadığınızı,"
+					+ " zayıf olduğunuzu gösterir. "
+					+ "Zayıflık, bazı hastalıklar için risk oluşturan ve istenmeyen bir durumdur."
+					+ " \nBoyunuza uygun ağırlığa erişmeniz için yeterli ve dengeli beslenmeli,"
+					+ " beslenme alışkanlıklarınızı geliştirmeye özen göstermelisiniz.";}
+		if(result>18.4&&result<=24.9) {
+			evaluationResult="Uzunluğunuza göre uygun ağırlıkta olduğunuzu gösterir. "
+					+ "\nYeterli ve dengeli beslenerek ve "
+					+ "düzenli fiziksel aktivite yaparak bu ağırlığınızı"
+					+ " korumaya özen gösteriniz.";
+		}
+		if(result>25&&result<=29.9) {
+			evaluationResult="Boyunuza göre vücut ağırlığınızın fazla olduğunu gösterir."
+					+ "\n Fazla kilolu olma durumu gerekli önlemler alınmadığı "
+					+ "takdirde pek çok hastalık için risk\n faktörü olan obeziteye "
+					+ "(şişmanlık) yol açar.";
+		}
+		if(result>30&&result<=34.9) {
+			evaluationResult="Boyunuza göre vücut ağırlığınızın fazla olduğunu gösterir."
+					+ " \nFazla kilolu olma durumu gerekli önlemler alınmadığı "
+					+ "takdirde pek çok hastalık için risk faktörü olan obeziteye "
+					+ "(şişmanlık) yol açar.";
+		}
+		return evaluationResult;	 
+	}
+
+	void print() {
+		calculator();
+		evaluation();
+		control();
+		if(control()==false) {
+			System.out.println("Lütfen değerleri doğru giriniz veya doktora görününüz");
+			
+		}
+		else
+		System.out.println(" vücut kitle endeksiniz : "+result+"\n yaşınıza göre : "+age+" ve cinsiyetinize göre: "+gender
+				+"\n ve "+ evaluationResult);
+	
+
+}}
+
